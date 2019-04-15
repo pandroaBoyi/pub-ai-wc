@@ -35,7 +35,10 @@ import {
   TabPane,
   Cascader,
   Tag,
-  DatePicker
+  DatePicker,
+  Tree,
+  Collapse,
+  Panel,
 } from 'iview'
 
 const components = {
@@ -74,7 +77,10 @@ const components = {
   TabPane,
   Cascader,
   Tag,
-  DatePicker
+  DatePicker,
+  Tree,
+  Collapse,
+  Panel
 }
 
 const iview = {

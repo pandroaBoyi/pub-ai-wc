@@ -7,7 +7,7 @@
      <div class="search">
       <span class="ai-sel-label">公厕名称：</span>
       <Select
-        class="ai-sel search-name"
+        class="ai-sel search-ipt"
         placeholder="请输入公厕名称"
         v-model="wcName"
         filterable
@@ -16,14 +16,8 @@
         :loading="wcLoading">
       </Select>
       <span class="ai-sel-label">类型</span>
-      <Select class="ai-sel" :model="wcType">
-        <Option value="">独立式一类</Option>
-        <Option value="">独立式二类</Option>
-        <Option value="">独立式三类</Option>
-        <Option value="">附属式一类</Option>
-        <Option value="">附属式二类</Option>
-      </Select>
-      <Button type="primary" class="ai-btn">查询</Button>
+      <wc-cascader :data.sync="wcType" class="ai-sel search-ipt"></wc-cascader>
+      <Button type="primary" class="ai-btn" @click="handleSearch">查询</Button>
     </div>
     </template>
     <template slot="content">
@@ -46,8 +40,9 @@ import { Component, Vue, Prop } from 'vue-property-decorator';
 import { State, Getter, Mutation, Action, namespace  } from 'vuex-class';
 import ComTab from '@/components/home/content/ComTab.vue';
 import ComBtn from '@/components/home/content/ComBtn.vue';
-import PrimaryModel from '@/components/home/content/PrimaryModel.vue'
-import { IviewRenderParams } from '../../types/index';
+import PrimaryModel from '@/components/home/content/PrimaryModel.vue';
+import WcCascader from '@/components/home/content/wc/info/WcCascader.vue';
+import { IviewRenderParams, IviewCascader } from '../../types/index';
 
 const userModule = namespace('sysUser');
 
@@ -55,10 +50,13 @@ const userModule = namespace('sysUser');
   components: {
     ComTab,
     PrimaryModel,
-    ComBtn
+    ComBtn,
+    WcCascader
   }
 })
 export default class WcEvaluate extends Vue {
+  private wcType: string[] = [];
+  private wcName: string = '';
   private loading: boolean = false;
   private wcLoading: boolean = false;
   private columns4: Array<any> =[
@@ -103,19 +101,20 @@ export default class WcEvaluate extends Vue {
   private changePage(pageIdx: number) : void {
     console.log(pageIdx);
   };
-  private searchData(): void {
+  private handleSearch(): void {
+    console.log(this.wcType);
   };
   private batchRemove(): void {
   };
   private getWcName(): void {
 
-  }
+  };
 }
 </script>
 
 <style lang="scss" scoped>
 .search{
-  &-name{
+  &-ipt{
     width: 200px;
   }
 }

@@ -2,6 +2,7 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import createPersistedState from 'vuex-persistedstate';
 import User from '@/store/user';
+import WcInfo from '@/store/wcInfo';
 
 Vue.use(Vuex);
 
@@ -60,6 +61,7 @@ export default new Vuex.Store({
   },
   modules: {
     sysUser: User,
+    wcInfo: WcInfo,
   },
   plugins: [
     createPersistedState({

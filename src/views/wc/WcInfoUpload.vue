@@ -10,8 +10,8 @@
     <template slot="content">
       <div class="upload-block">
         <transition name="fade" mode="out-in">
-          <user-upload-tab v-if="users.length > 0"/>
-          <user-upload v-else/>
+          <info-upload-tab v-if="upList.length > 0"/>
+          <info-upload v-else/>
         </transition>
       </div>
     </template>
@@ -21,22 +21,21 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import { State, namespace } from 'vuex-class';
-import { User } from '@/types';
+import { WcInfo } from '@/types';
 import SecondaryModel from '@/components/home/content/SecondaryModel.vue';
-import UserUpload from '@/components/home/content/sys/user/upload/UserUpload.vue';
-import UserUploadTab from '@/components/home/content/sys/user/upload/UserUploadTab.vue';
-
-const userModule = namespace('sysUser');
+import InfoUpload from '@/components/home/content/wc/info/upload/InfoUpload.vue';
+import InfoUploadTab from '@/components/home/content/wc/info/upload/InfoUploadTab.vue';
+import { wcInfo } from '@/util/const/namespace';
 
 @Component({
   components: {
     SecondaryModel,
-    UserUpload,
-    UserUploadTab
+    InfoUpload,
+    InfoUploadTab
   }
 })
 export default class SysUserUpload extends Vue {
-  @userModule.State('uploadLists') private users!: User[];
+  @wcInfo.State('upList') private upList!: WcInfo[];
 }
 </script>
 

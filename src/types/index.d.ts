@@ -8,14 +8,31 @@
 // }
 
 export interface IviewRenderParams {
-  row: any;
-  column: any;
-  index: number;
+  row?: any;
+  column?: any;
+  index?: number;
+}
+export interface IviewCascader {
+  value: string;
+  label: string;
+  children?: IviewCascader[];
+}
+export interface IviewTree {
+  title: string;
+  expand?: boolean;
+  selected?: boolean;
+  children?: IviewTree[];
+}
+export interface IviewCheckbox {
+  label: string;
+  disabled: boolean;
+  key: string;
+  checked: boolean;
 }
 
 export interface TableCol {
-  title: string;
-  key: string;
+  title?: string;
+  key?: string;
 }
 
 export interface User {
@@ -42,8 +59,8 @@ export interface Search {
 }
 
 export interface UserSearch extends Search {
-  role: string;
-  status: string;
+  role?: string;
+  status?: string;
 }
 
 export interface MediaUpload {
@@ -56,9 +73,25 @@ export interface MediaUpload {
 }
 
 export interface WcFix {
-  date: string;
-  num: string | number;
-  name: string;
-  managerName: string;
-  
+  date?: string;
+  num?: string | number;
+  name?: string;
+  managerName?: string;
+}
+
+export interface Wc {
+  codeId?: string;
+  name?: string;
+  address?: string;
+  longitude?: number | string;
+  latitude?: number | string;
+  level?: string | string[];
+  managerName?: string;
+  place?: WcSeat[];
+}
+
+export interface WcSeat {
+  prefix?: string;
+  types?: string;
+  num?: number;
 }

@@ -54,7 +54,6 @@ export default class ComTab extends Vue {
     return selection;
   }
   get cols(): Array<any> {
-    console.log(this.custzCols)
     if (this.custzCols && this.custzCols.length > 0) {
       const selCol = {
         type: 'selection',
