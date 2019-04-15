@@ -23,10 +23,9 @@ export interface IviewTree {
   selected?: boolean;
   children?: IviewTree[];
 }
-export interface IviewCheckbox {
+export interface IviewCheckbox extends WcSeat{
   label: string;
   disabled: boolean;
-  key: string;
   checked: boolean;
 }
 

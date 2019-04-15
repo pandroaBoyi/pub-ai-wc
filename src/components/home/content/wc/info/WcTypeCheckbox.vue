@@ -188,7 +188,7 @@
 <script lang="ts">
 import { Component, Vue, Prop } from 'vue-property-decorator';
 import { State, Getter, Mutation, Action, namespace  } from 'vuex-class';
-import { IviewCheckbox } from '@/types/index';
+import { IviewCheckbox, WcSeat } from '@/types/index';
 
 const userModule = namespace('sysUser');
 
@@ -198,6 +198,7 @@ const userModule = namespace('sysUser');
   }
 })
 export default class WcTypeCheckbox extends Vue {
+  @Prop({type: Array, default: () => {return [];}}) private readonly lists!: WcSeat[];
   private male: IviewCheckbox[] = [];
   private female: IviewCheckbox[] = [];
   private pee: IviewCheckbox[] =[];
@@ -205,23 +206,23 @@ export default class WcTypeCheckbox extends Vue {
   private idpbaby: IviewCheckbox[] = [];
   private currentType: string = '';
   private maleColl = {
-    type1: '男厕-蹲位',
-    type2: '男厕-坐位',
-    type3: '男厕-小便池',
-    type4: '男厕-无障碍位'
+    type1: '蹲位',
+    type2: '坐位',
+    type3: '小便池',
+    type4: '无障碍位'
   };
   private femaleColl = {
-    type1: '女厕-蹲位',
-    type2: '女厕-坐位',
-    type3: '女厕-无障碍位',
+    type1: '蹲位',
+    type2: '坐位',
+    type3: '无障碍位',
   };
   private baby = {
-    type1: '母婴室-独立母婴室',
-    type2: '母婴室-女厕母婴室',
+    type1: '独立母婴室',
+    type2: '女厕母婴室',
   };
   private l3bath = {
-    type1: '第三卫生间-坐位',
-    type2: '第三卫生间-小便池'
+    type1: '坐位',
+    type2: '小便池'
   };
   private handleCollChange(key: string, checkList: IviewCheckbox[]): void {
     console.log(key);
@@ -233,8 +234,8 @@ export default class WcTypeCheckbox extends Vue {
     console.log(key);
     if (this.currentType !== key) {
       for (const ck of checkList) {
-        if (ck.key !== '' && ck.checked) {
-          if (ck.key !== key) {
+        if (ck.types !== '' && ck.checked) {
+          if (ck.types !== key) {
             ck.disabled = true;
           } else {
             ck.disabled = false;
@@ -245,7 +246,7 @@ export default class WcTypeCheckbox extends Vue {
     this.currentType = key;
   }
   private getCheckList(lab: IviewCheckbox): void{
-    lab.key = this.currentType;
+    lab.types = this.currentType;
   }
   mounted() {
    for (let idx = 1; idx <= 30; idx++) {
@@ -253,14 +254,18 @@ export default class WcTypeCheckbox extends Vue {
          label: idx + '号',
          disabled: false,
          checked: false,
-         key: ''
+         types: '',
+         prefix: '女厕',
+         num: idx
        });
      if (idx <= 18) {
        this.male.push({
          label: idx + '号',
          disabled: false,
          checked: false,
-         key: ''
+         types: '',
+         prefix: '男厕',
+         num: idx
        });
      }
      if (idx <= 14) {
@@ -268,7 +273,9 @@ export default class WcTypeCheckbox extends Vue {
          label: idx + '号',
          disabled: false,
          checked: false,
-         key: ''
+         types: '',
+         prefix: '男厕',
+         num: idx
        });
      }
      if (idx <= 4) {
@@ -276,7 +283,9 @@ export default class WcTypeCheckbox extends Vue {
          label: idx + '号',
          disabled: false,
          checked: false,
-         key: ''
+         types: '',
+         prefix: '第三卫生间',
+         num: idx
        });
      }
      if (idx <= 2) {
@@ -284,7 +293,9 @@ export default class WcTypeCheckbox extends Vue {
          label: idx + '号',
          disabled: false,
          checked: false,
-         key: ''
+         types: '',
+         prefix: '母婴室',
+         num: idx
        });
      }
    } 
