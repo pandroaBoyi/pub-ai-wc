@@ -1,0 +1,83 @@
+html, body{
+  font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
+  font-size: 16px;
+}
+
+.ai-container{
+  width: 1440px;
+  margin: 0 auto;
+}
+
+.ai-title{
+  font-weight: 600;
+  font-size: 16px;
+  &-lg{
+    font-size: 32px;
+  }
+  &-sub{
+    font-size: 14px;
+  }
+  &-sm{
+    font-size: 12px;
+  }
+}
+
+.ai-text{
+  font-size: 14px;
+  font-weight: 400;
+  &-assist{
+    color: $assist;
+  }
+  &-disabled{
+
+  }
+  &-link{
+    
+  }
+}
+
+.ai-btn{
+  width: 80px;
+}
+.ai-sel{
+  width: 130px;
+  margin-right: 24px;
+  &-label{
+    font-size: 14px;
+    margin-right: 10px;
+  }
+}
+
+
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
+}
+.fade-enter, .fade-leave-to {
+  opacity: 0;
+}
+
+.err-cell{
+  color: #ff6600;
+}
+
+.media-pub > .ivu-tabs > .ivu-tabs-bar .ivu-tabs-tab{
+  width: 40%;
+  text-align: center;
+  line-height: 40px;
+}
+
+.media-form{
+  padding: 20px;
+  &-ipt{
+    width: 40%;
+  }
+  &-sel{
+    width: 25%;
+  }
+  &-btn{
+    a {
+      margin-left: 24px;
+    }
+  }
+}
