@@ -3,7 +3,7 @@
     <template slot="header">
       <Breadcrumb separator=">">
         <BreadcrumbItem >{{$NAV_CONST.SYS}}</BreadcrumbItem>
-        <BreadcrumbItem :to="$URL_CONST.SYS_ROLE">{{$NAV_CONST.SYS_ROLE}}</BreadcrumbItem>
+        <BreadcrumbItem :to="{name: $UNAME_CONST.SYS_ROLE}">{{$NAV_CONST.SYS_ROLE}}</BreadcrumbItem>
         <BreadcrumbItem v-if="true">{{$NAV_CONST.SYS_ROLE_ADD}}</BreadcrumbItem>
         <BreadcrumbItem v-else>{{$NAV_CONST.SYS_ROLE_UPDATE}}</BreadcrumbItem>
       </Breadcrumb>

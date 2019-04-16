@@ -3,7 +3,7 @@
     <template slot="header">
       <Breadcrumb separator=">">
         <BreadcrumbItem >{{$NAV_CONST.MEDIA}}</BreadcrumbItem>
-        <BreadcrumbItem :to="$URL_CONST.MEDIA_REVIEW">{{$NAV_CONST.MEDIA_REVIEW}}</BreadcrumbItem>
+        <BreadcrumbItem :to="{name: $UNAME_CONST.MEDIA_REVIEW}">{{$NAV_CONST.MEDIA_REVIEW}}</BreadcrumbItem>
         <BreadcrumbItem >{{$NAV_CONST.MEDIA_REVIEW_HIS}}</BreadcrumbItem>
       </Breadcrumb>
     </template>

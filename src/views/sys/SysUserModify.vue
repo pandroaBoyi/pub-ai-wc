@@ -3,7 +3,7 @@
     <template slot="header">
       <Breadcrumb separator=">">
         <BreadcrumbItem >{{$NAV_CONST.SYS}}</BreadcrumbItem>
-        <BreadcrumbItem :to="$URL_CONST.SYS_USER">{{$NAV_CONST.SYS_USER}}</BreadcrumbItem>
+        <BreadcrumbItem :to="{name: $UNAME_CONST.SYS_USER}">{{$NAV_CONST.SYS_USER}}</BreadcrumbItem>
         <BreadcrumbItem v-if="true">{{$NAV_CONST.SYS_USER_ADD}}</BreadcrumbItem>
         <BreadcrumbItem v-else>{{$NAV_CONST.SYS_USER_UPDATE}}</BreadcrumbItem>
       </Breadcrumb>

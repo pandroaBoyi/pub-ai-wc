@@ -1,5 +1,5 @@
 <template>
-  <Collapse accordion simple >
+  <Collapse accordion simple @on-change="handleChange">
     <Panel name="男厕">
       男厕
       <div slot="content">
@@ -186,11 +186,9 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue, Prop } from 'vue-property-decorator';
+import { Component, Vue, Prop, Emit } from 'vue-property-decorator';
 import { State, Getter, Mutation, Action, namespace  } from 'vuex-class';
 import { IviewCheckbox, WcSeat } from '@/types/index';
-
-const userModule = namespace('sysUser');
 
 @Component({
   components: {
@@ -199,12 +197,17 @@ const userModule = namespace('sysUser');
 })
 export default class WcTypeCheckbox extends Vue {
   @Prop({type: Array, default: () => {return [];}}) private readonly lists!: WcSeat[];
+  @Emit('update:lists')
+  private updataSeatType(list: WcSeat[]): WcSeat[] {
+    return list;
+  }
   private male: IviewCheckbox[] = [];
   private female: IviewCheckbox[] = [];
   private pee: IviewCheckbox[] =[];
   private third: IviewCheckbox[] = [];
   private idpbaby: IviewCheckbox[] = [];
   private currentType: string = '';
+  private comList: IviewCheckbox[] = [];
   private maleColl = {
     type1: '蹲位',
     type2: '坐位',
@@ -224,14 +227,21 @@ export default class WcTypeCheckbox extends Vue {
     type1: '坐位',
     type2: '小便池'
   };
-  private handleCollChange(key: string, checkList: IviewCheckbox[]): void {
-    console.log(key);
+  private handleChange(key: any) {
+    if (key) key = key[0];
+    if (key === '母婴室' || key === '女厕') {
+      for (const ck of this.female) {
+        if (ck.types !== '') {
+          ck.disabled = true;
+        } 
+      }
+    }
+  }
+  private handleCollChange(key: any, checkList: IviewCheckbox[]): void {
     if (key) key = key[0];
     if (!this.currentType) {
       this.currentType = key;
     }
-    console.log(checkList);
-    console.log(key);
     if (this.currentType !== key) {
       for (const ck of checkList) {
         if (ck.types !== '' && ck.checked) {
@@ -247,56 +257,79 @@ export default class WcTypeCheckbox extends Vue {
   }
   private getCheckList(lab: IviewCheckbox): void{
     lab.types = this.currentType;
+    const filter: IviewCheckbox[]= this.comList.filter((item) => {
+      return item.checked;
+    });
+    const place: WcSeat[] = filter.map((item) => {
+      return {
+        prefix: item.prefix,
+        types: item.types,
+        num: item.num
+      };
+    });
+    this.updataSeatType(place);
   }
   mounted() {
    for (let idx = 1; idx <= 30; idx++) {
-     this.female.push({
+     if (idx <= 30) {
+       const obj: IviewCheckbox = {
          label: idx + '号',
          disabled: false,
          checked: false,
          types: '',
          prefix: '女厕',
          num: idx
-       });
+       };
+       this.female.push(obj);
+       this.comList.push(obj);
+     }
      if (idx <= 18) {
-       this.male.push({
+       const obj: IviewCheckbox = {
          label: idx + '号',
          disabled: false,
          checked: false,
          types: '',
          prefix: '男厕',
          num: idx
-       });
+       };
+       this.male.push(obj);
+       this.comList.push(obj);
      }
      if (idx <= 14) {
-       this.pee.push({
+       const obj: IviewCheckbox = {
          label: idx + '号',
          disabled: false,
          checked: false,
          types: '',
          prefix: '男厕',
          num: idx
-       });
+       };
+       this.pee.push(obj);
+       this.comList.push(obj);
      }
      if (idx <= 4) {
-       this.third.push({
+       const obj: IviewCheckbox = {
          label: idx + '号',
          disabled: false,
          checked: false,
          types: '',
          prefix: '第三卫生间',
          num: idx
-       });
+       };
+       this.third.push(obj);
+       this.comList.push(obj);
      }
      if (idx <= 2) {
-        this.idpbaby.push({
-         label: idx + '号',
-         disabled: false,
-         checked: false,
-         types: '',
-         prefix: '母婴室',
-         num: idx
-       });
+        const obj: IviewCheckbox = {
+          label: idx + '号',
+          disabled: false,
+          checked: false,
+          types: '',
+          prefix: '母婴室',
+          num: idx
+        };
+        this.idpbaby.push(obj);
+        this.comList.push(obj);
      }
    } 
   }

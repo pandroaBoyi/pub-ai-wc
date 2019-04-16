@@ -28,6 +28,11 @@ export interface IviewCheckbox extends WcSeat{
   disabled: boolean;
   checked: boolean;
 }
+export interface IviewFormCheck {
+  required?: boolean;
+  message?: string;
+  trigger?: string;
+}
 
 export interface TableCol {
   title?: string;
@@ -79,14 +84,22 @@ export interface WcFix {
 }
 
 export interface Wc {
-  codeId?: string;
+  toiletid?: string;
+  codeId?: string | IviewFormCheck[];
+  name?: string | IviewFormCheck[];
+  address?: string | IviewFormCheck[];
+  longitude?: number | string | IviewFormCheck[];
+  latitude?: number | string | IviewFormCheck[];
+  level?: string | string[] | IviewFormCheck[];
+  managerName?: string | IviewFormCheck[];
+  place?: WcSeat[] | IviewFormCheck[];
+}
+
+export interface WcInfo {
   name?: string;
-  address?: string;
-  longitude?: number | string;
-  latitude?: number | string;
-  level?: string | string[];
-  managerName?: string;
-  place?: WcSeat[];
+  level?: string;
+  pageSize: number;
+  pageNum: number;
 }
 
 export interface WcSeat {

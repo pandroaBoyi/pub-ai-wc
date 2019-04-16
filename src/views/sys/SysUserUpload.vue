@@ -3,8 +3,8 @@
     <template slot="header">
       <Breadcrumb separator=">">
         <BreadcrumbItem >{{$NAV_CONST.SYS}}</BreadcrumbItem>
-        <BreadcrumbItem :to="$URL_CONST.SYS_USER">{{$NAV_CONST.SYS_USER}}</BreadcrumbItem>
-        <BreadcrumbItem :to="$URL_CONST.SYS_USER_IMPORT">{{$NAV_CONST.SYS_USER_IMPORT}}</BreadcrumbItem>
+        <BreadcrumbItem :to="{name: $UNAME_CONST.SYS_USER}">{{$NAV_CONST.SYS_USER}}</BreadcrumbItem>
+        <BreadcrumbItem :to="{name: $UNAME_CONST.SYS_USER_IMPORT}">{{$NAV_CONST.SYS_USER_IMPORT}}</BreadcrumbItem>
       </Breadcrumb>
     </template>
     <template slot="content">

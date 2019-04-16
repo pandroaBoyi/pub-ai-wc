@@ -3,6 +3,7 @@ import Vuex from 'vuex';
 import createPersistedState from 'vuex-persistedstate';
 import User from '@/store/user';
 import WcInfo from '@/store/wcInfo';
+import qs from 'qs';
 
 Vue.use(Vuex);
 
@@ -33,16 +34,21 @@ export default new Vuex.Store({
   },
   actions: {
     async getSiderNavs({commit}, that?: any): Promise<any> {
-      return window.axios.get('api/toilet/main/index').then((resp: any) => {
+      return window.axios.get('/toilet/main/index').then((resp: any) => {
         commit('setSiderNavs', resp.data.data);
       }).catch((e) => {
         that.$Message.error(e);
       });
     },
     async login({commit}, that?: any): Promise<any> {
-      return window.axios.post('api/toilet/userManage/account/login', {
+      const params = {
         phone: that.user.name,
         password: that.user.pwd,
+      };
+      return window.axios.post('/toilet/userManage/account/login', qs.stringify(params), {
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
       }).then((resp: any) => {
         const respData = resp.data;
         if (respData && respData.code === 2000) {

@@ -62,7 +62,7 @@
         <Divider />
         <FormItem class="media-form-btn">
           <Button type="primary" @click="handleSubmit('pic')" class="ai-btn">提交</Button>
-          <Button :to="$URL_CONST.SYS_USER" class="ai-btn">取消</Button>
+          <Button :to="$.SYS_USER" class="ai-btn">取消</Button>
         </FormItem>
       </Form>
   </div>

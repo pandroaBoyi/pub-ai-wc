@@ -44,7 +44,7 @@
     </FormItem>
     <FormItem class="user-form-btn">
       <Button type="primary" @click="handleSubmit('user')" class="ai-btn">确定</Button>
-      <Button :to="$URL_CONST.SYS_USER" class="ai-btn">取消</Button>
+      <Button :to="{name: $UNAME_CONST.SYS_USER}" class="ai-btn">取消</Button>
     </FormItem>
   </Form>
 </template>

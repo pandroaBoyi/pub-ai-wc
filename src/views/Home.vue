@@ -15,7 +15,7 @@
                     </template>
                     <template v-for="(childNav, idx) in nav.subMenu">
                       <template v-if="childNav.hasMenu">
-                        <MenuItem :name="nav.mENU_ID+childNav.mENU_ID" :key="idx" :to="childNav.mENU_URL" >
+                        <MenuItem :name="nav.mENU_ID+childNav.mENU_ID" :key="idx" :to="{name: childNav.mENU_URL}" >
                           <span>{{childNav.mENU_NAME}}</span>
                         </MenuItem>
                       </template>

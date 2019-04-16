@@ -16,8 +16,9 @@ declare module 'vue/types/vue' {
       read: Function;
       utils: XLSX$Utils;
     };
-    $URL_CONST: any;
+    // $URL_CONST: any;
     $NAV_CONST: any;
+    $UNAME_CONST: any;
   }
   interface VueConstructor {
     $axios: AxiosInstance
@@ -25,7 +26,8 @@ declare module 'vue/types/vue' {
       read: Function;
       utils: XLSX$Utils;
     };
-    $URL_CONST: any;
+    // $URL_CONST: any;
     $NAV_CONST: any;
+    $UNAME_CONST: any;
   }
 }

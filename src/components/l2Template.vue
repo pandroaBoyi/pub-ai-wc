@@ -3,7 +3,7 @@
     <template slot="header">
       <Breadcrumb separator=">">
         <BreadcrumbItem >{{$NAV_CONST.WC}}</BreadcrumbItem>
-        <BreadcrumbItem :to="$URL_CONST.WC_FIX">{{$NAV_CONST.WC_FIX}}</BreadcrumbItem>
+        <BreadcrumbItem :to="{name: $UNAME_CONST.WC_FIX}">{{$NAV_CONST.WC_FIX}}</BreadcrumbItem>
         <BreadcrumbItem v-if="true">{{$NAV_CONST.WC_FIX_ADD}}</BreadcrumbItem>
         <BreadcrumbItem >{{$NAV_CONST.WC_FIX_UPDATE}}</BreadcrumbItem>
       </Breadcrumb>

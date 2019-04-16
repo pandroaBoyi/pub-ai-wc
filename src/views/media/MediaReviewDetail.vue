@@ -3,7 +3,7 @@
     <template slot="header">
       <Breadcrumb separator=">">
         <BreadcrumbItem >{{$NAV_CONST.MEDIA}}</BreadcrumbItem>
-        <BreadcrumbItem :to="$URL_CONST.MEDIA_REVIEW">{{$NAV_CONST.MEDIA_REVIEW}}</BreadcrumbItem>
+        <BreadcrumbItem :to="{name: $UNAME_CONST.MEDIA_REVIEW}">{{$NAV_CONST.MEDIA_REVIEW}}</BreadcrumbItem>
         <BreadcrumbItem >{{$NAV_CONST.MEDIA_REVIEW_DETAIL}}</BreadcrumbItem>
       </Breadcrumb>
     </template>
@@ -35,7 +35,7 @@
         </div>
         <Divider />
         <div class="review-approve">
-          <Button :to="$URL_CONST.SYS_USER" class="ai-btn">审核驳回</Button>
+          <Button :to="$UNAME_CONST.SYS_USER" class="ai-btn">审核驳回</Button>
           <Button type="primary"  class="ai-btn">审核通过</Button>
         </div>
       </div>

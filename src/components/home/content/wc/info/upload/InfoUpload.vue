@@ -32,18 +32,16 @@ import ComUpload from '@/components/home/content/execlUpload/ComUpload.vue';
 import { User, CellClassName } from '@/types';
 import { wcInfo } from '@/util/const/namespace';
 
-const userModule = namespace('sysUser');
-
 @Component({
   components: {
     ComUpload
   }
 })
 export default class UserUpload extends Vue {
-  @userModule.State('upLoading') private upLoading!: Function;
-  @userModule.Mutation('setUpLoading') private setUpLoading!: Function;
-  @userModule.Mutation('updateUploadLists') private updateUploadLists!: Function;
-  @userModule.Mutation('addErr') private addErr!: Function;
+  @wcInfo.State('upLoading') private upLoading!: Function;
+  @wcInfo.Mutation('setUpLoading') private setUpLoading!: Function;
+  @wcInfo.Mutation('updateUpList') private updateUpList!: Function;
+  @wcInfo.Mutation('addErr') private addErr!: Function;
   private keyNames: string[] = ['uname', 'number', 'roleid', 'sex', 'phone', 'password','status','CreateUserId'];
   private setData (users: User[]) {
     users = users.slice(2);
@@ -52,7 +50,7 @@ export default class UserUpload extends Vue {
       return props.includes('uname') && props.includes('number') && props.includes('phone') && props.includes('password');
     })
     this.checkData(users);
-    this.updateUploadLists(users);
+    this.updateUpList(users);
     this.setUpLoading(false);
   }
   private checkData(users: User[]): void{

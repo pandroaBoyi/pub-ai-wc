@@ -1,7 +1,7 @@
 <template>
   <primary-model>
     <template slot="header-left">
-      <com-btn :addPath="$URL_CONST.WC_INFO_MODIFY" :impPath="$URL_CONST.WC_INFO_UPLOAD" @batch-remove="batchRemove"></com-btn>
+      <com-btn :addPath="{name: $UNAME_CONST.WC_INFO_MODIFY, params: {id: 'add'}}" :impPath="$UNAME_CONST.WC_INFO_UPLOAD" @batch-remove="batchRemove"></com-btn>
     </template>
     <template slot="header-right">
      <div class="search">
@@ -37,14 +37,13 @@
 
 <script lang="ts">
 import { Component, Vue, Prop } from 'vue-property-decorator';
-import { State, Getter, Mutation, Action, namespace  } from 'vuex-class';
+import { State, Getter, Mutation, Action } from 'vuex-class';
 import ComTab from '@/components/home/content/ComTab.vue';
 import ComBtn from '@/components/home/content/ComBtn.vue';
 import PrimaryModel from '@/components/home/content/PrimaryModel.vue';
 import WcCascader from '@/components/home/content/wc/info/WcCascader.vue';
-import { IviewRenderParams, IviewCascader } from '../../types/index';
-
-const userModule = namespace('sysUser');
+import { IviewRenderParams, IviewCascader, WcInfo } from '@/types/index';
+import { wcInfo } from '@/util/const/namespace';
 
 @Component({
   components: {
@@ -55,23 +54,35 @@ const userModule = namespace('sysUser');
   }
 })
 export default class WcEvaluate extends Vue {
+  @wcInfo.State('wcList') private wcList!: any[];
+  @wcInfo.Action('getWcList') private getWcList!: Function;
+  private reqData: WcInfo = {
+    name: '',
+    level: '',
+    pageNum: 10,
+    pageSize: 1
+  };
   private wcType: string[] = [];
   private wcName: string = '';
   private loading: boolean = false;
   private wcLoading: boolean = false;
   private columns4: Array<any> =[
     {
-    title: 'Name',
+    title: '编号',
+    key: 'codeid'
+    },
+    {
+    title: '公厕名称',
     key: 'name'
     },
     {
-    title: 'Age',
-    key: 'age'
+    title: '类型',
+    key: 'level'
     },
     {
-    title: 'Address',
-    key: 'address'
-    }
+    title: '所长',
+    key: 'managername'
+    },
   ];
   private data1: Array<any> =[{
     name: 'John Brown',
@@ -109,6 +120,9 @@ export default class WcEvaluate extends Vue {
   private getWcName(): void {
 
   };
+  mounted() {
+   this.getWcList(this.reqData);
+  }
 }
 </script>
 

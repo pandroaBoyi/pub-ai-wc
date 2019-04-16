@@ -5,9 +5,9 @@ import store from '@/store';
 
 // Full config:  https://github.com/axios/axios#request-config
 // axios.defaults.baseURL = process.env.baseURL || process.env.apiUrl || '';
-// axios.defaults.baseURL = '/api';
+axios.defaults.baseURL = '/api';
 // axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;
-axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
+// axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 
 const config = {
   // baseURL: process.env.baseURL || process.env.apiUrl || ""
@@ -15,14 +15,14 @@ const config = {
   // withCredentials: true, // Check cross-site Access-Control
 };
 
-const instance = axios.create(config);
+const http = axios.create(config);
 
-instance.interceptors.request.use(
+http.interceptors.request.use(
   (cfg) => {
     // Do something before request is sent
-    if (cfg.method === 'post') {
-      cfg.data = qs.stringify(cfg.data);
-    }
+    // if (cfg.method === 'post') {
+    //   cfg.data = qs.stringify(cfg.data);
+    // }
     if (store.state.token) {
       cfg.headers.Token = store.state.token;
     }
@@ -35,7 +35,7 @@ instance.interceptors.request.use(
 );
 
 // Add a response interceptor
-instance.interceptors.response.use(
+http.interceptors.response.use(
   (res) => {
     // Do something with response data
     return res;
@@ -48,16 +48,16 @@ instance.interceptors.response.use(
 
 const Plugin: PluginObject<any> = {
   install: (vue: Vue | VueConstructor) => {
-    vue.$axios = instance;
+    vue.$axios = http;
   },
 };
 Plugin.install = (vue: Vue | VueConstructor) => {
-  vue.$axios = instance;
-  window.axios = instance;
+  vue.$axios = http;
+  window.axios = http;
   Object.defineProperties(Vue.prototype, {
     $axios: {
       get() {
-        return instance;
+        return http;
       },
     },
   });
@@ -65,4 +65,4 @@ Plugin.install = (vue: Vue | VueConstructor) => {
 
 Vue.use(Plugin);
 
-export default Plugin;
+export default {Plugin, http};

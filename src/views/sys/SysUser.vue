@@ -1,7 +1,7 @@
 <template>
   <primary-model>
     <template slot="header-left">
-      <com-btn :addPath="$URL_CONST.SYS_USER_MODIFY" :impPath="$URL_CONST.SYS_USER_UPLOAD" @batch-remove="batchRemove"></com-btn>
+      <com-btn :addPath="{name: $UNAME_CONST.SYS_USER_MODIF}" :impPath="$UNAME_CONST.SYS_USER_UPLOAD" @batch-remove="batchRemove"></com-btn>
     </template>
     <template slot="header-right">
       <user-search></user-search>

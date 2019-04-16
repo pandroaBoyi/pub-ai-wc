@@ -3,8 +3,8 @@
     <template slot="header">
       <Breadcrumb separator=">">
         <BreadcrumbItem >{{$NAV_CONST.WC}}</BreadcrumbItem>
-        <BreadcrumbItem :to="$URL_CONST.WC_INFO">{{$NAV_CONST.WC_INFO}}</BreadcrumbItem>
-        <BreadcrumbItem :to="$URL_CONST.WC_INFO_UPLOAD">{{$NAV_CONST.WC_INFO_UPLOAD}}</BreadcrumbItem>
+        <BreadcrumbItem :to="{name: $UNAME_CONST.WC_INFO}">{{$NAV_CONST.WC_INFO}}</BreadcrumbItem>
+        <BreadcrumbItem :to="{name: $UNAME_CONST.WC_INFO_UPLOAD}">{{$NAV_CONST.WC_INFO_UPLOAD}}</BreadcrumbItem>
       </Breadcrumb>
     </template>
     <template slot="content">

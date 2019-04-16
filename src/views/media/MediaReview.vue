@@ -2,7 +2,7 @@
   <primary-model>
     <template slot="header-right">
       <div class="header-search">
-        <Button  class="ai-btn" :to="$URL_CONST.MEDIA_REVIEW_HIS">审核记录</Button>
+        <Button  class="ai-btn" :to="{name: $UNAME_CONST.MEDIA_REVIEW_HIS}">审核记录</Button>
       </div>
     </template>
     <template slot="content">
@@ -59,7 +59,7 @@ export default class MediaReview extends Vue {
               props: {
                   type: 'primary',
                   size: 'small',
-                  to: this.$URL_CONST.MEDIA_REVIEW_DETAIL
+                  to: this.$UNAME_CONST.MEDIA_REVIEW_DETAIL
               }
           }, '审核'),
         ]);

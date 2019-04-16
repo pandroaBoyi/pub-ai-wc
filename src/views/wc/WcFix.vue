@@ -1,7 +1,7 @@
 <template>
   <primary-model>
     <template slot="header-left">
-      <Button type="primary" icon="md-add" class="ai-btn" :to="$URL_CONST.WC_FIX_MODIFY">新建</Button>
+      <Button type="primary" icon="md-add" class="ai-btn" :to="{name: $UNAME_CONST.WC_FIX_MODIFY}">新建</Button>
     </template>
     <template slot="header-right">
       <span class="ai-sel-label">状态：</span>
@@ -82,7 +82,7 @@ export default class WcEvaluate extends Vue {
               props: {
                   type: 'primary',
                   size: 'small',
-                  to: this.$URL_CONST.WC_FIX_MODIFY
+                  to: this.$UNAME_CONST.WC_FIX_MODIFY
               }
           }, '修改'),
         ]);
