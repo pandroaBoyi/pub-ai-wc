@@ -116,7 +116,7 @@ export default class WcInfoModify extends Vue {
   private handleSubmit(name: string): void {
     (<Form>this.$refs[name]).validate((valid?: boolean): void => {
       if (valid) {
-        this.wcModify(this.wc);
+        this.wcModify({data: this.wc,that: this});
       } else {
         this.$Message.error('Fail!');
       }

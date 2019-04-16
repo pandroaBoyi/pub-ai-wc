@@ -8,7 +8,9 @@
         <BreadcrumbItem v-else>{{$NAV_CONST.SYS_ROLE_UPDATE}}</BreadcrumbItem>
       </Breadcrumb>
     </template>
-    <template slot="content"></template>
+    <template slot="content">
+      <Form :model=""></Form>
+    </template>
   </secondary-model>
 </template>
 
@@ -25,7 +27,9 @@ const userModule = namespace('sysUser');
   }
 })
 export default class SysRoleModify extends Vue {
+  private role: any ={
 
+  };
 }
 </script>
 

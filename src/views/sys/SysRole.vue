@@ -1,7 +1,7 @@
 <template>
   <primary-model>
     <template slot="header">
-      <Button type="primary" :to="{name: $UNAME_CONST.SYS_ROLE_MODIFY}">新建</Button>
+      <Button type="primary" icon="md-add" class="ai-btn" :to="{name: $UNAME_CONST.SYS_ROLE_MODIFY}">新建</Button>
     </template>
     <template slot="content">
       <com-tab

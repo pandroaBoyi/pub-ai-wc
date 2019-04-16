@@ -5,8 +5,7 @@
 <script lang="ts">
 import { Component, Vue, Prop } from 'vue-property-decorator';
 import { State, Getter, Mutation, Action, namespace  } from 'vuex-class';
-
-const userModule = namespace('sysUser');
+import {} from '@/util/const/namespace';
 
 @Component({
   components: {
