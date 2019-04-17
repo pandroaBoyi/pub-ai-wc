@@ -1,7 +1,9 @@
+import SysUser from '../views/sys/SysUser.vue';
+import { SysUserParams } from '../types/index';
 export default {
   namespaced: true,
   state: {
-    userLists: [],
+    userList: [],
     delLists: [],
     uploadLists: [],
     uploadListsErr: 0,
@@ -31,8 +33,25 @@ export default {
     },
   },
   actions: {
-    // getUserList({commit: any}, params: any) {
-    //   window.axios.post('api/toilet/userManage/users', )
-    // }
+    getUserList({commit}: {commit: any}, {search, that}: {search: SysUserParams, that: SysUser}) {
+      const param = {
+        roleName: search.role,
+        status: search.status,
+        pageNum: search.pageNum,
+        pageSize: search.pageSize,
+      };
+      window.axios.get('/toilet/userManage/users', {
+        params: param,
+      }).then((resp) => {
+        const respData = resp.data;
+        if (respData.code === 2000) {
+          commit('updateUserList', respData.data);
+        } else {
+          that.$Message.error(respData.msg);
+        }
+      }).catch((e) => {
+        that.$Message.error(e);
+      });
+    },
   },
 };

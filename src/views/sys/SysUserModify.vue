@@ -9,9 +9,7 @@
       </Breadcrumb>
     </template>
     <template slot="content">
-      <div class="modify-block">
-        <user-form></user-form>
-      </div>
+      <user-form></user-form>
     </template>
   </secondary-model>
 </template>
@@ -21,8 +19,6 @@ import { Component, Vue } from 'vue-property-decorator';
 import { State, namespace } from 'vuex-class';
 import SecondaryModel from '@/components/home/content/SecondaryModel.vue';
 import UserForm from '@/components/home/content/sys/user/modify/UserForm.vue';
-
-const userModule = namespace('sysUser');
 
 @Component({
   components: {
@@ -36,7 +32,4 @@ export default class SysUserAdd extends Vue {
 </script>
 
 <style lang="scss" scoped>
-.modify-block{
-  
-}
 </style>

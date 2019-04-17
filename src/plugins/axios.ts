@@ -20,9 +20,10 @@ const http = axios.create(config);
 http.interceptors.request.use(
   (cfg) => {
     // Do something before request is sent
-    // if (cfg.method === 'post') {
-    //   cfg.data = qs.stringify(cfg.data);
-    // }
+    if (cfg.method === 'post') {
+      cfg.headers = {'Content-Type':'application/x-www-form-urlencoded'};
+      cfg.data = qs.stringify(cfg.data);
+    }
     if (store.state.token) {
       cfg.headers.Token = store.state.token;
     }

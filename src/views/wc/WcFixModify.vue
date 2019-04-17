@@ -66,7 +66,7 @@ export default class WcFixModify extends Vue {
     sex: '男',
     status: '1',
     roleid: '',
-    CreateUserId: ''
+    toiletId: ''
   }
   private ruleValidate: any = {};
   private handleSubmit(name: string): void {

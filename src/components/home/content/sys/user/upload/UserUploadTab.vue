@@ -57,7 +57,7 @@ export default class UserUploadTab extends Vue {
     },
     {
       title: '公厕分配',
-      key: 'CreateUserId',
+      key: 'toiletId',
     },
   ];
   private clearUpData(): void{

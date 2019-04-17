@@ -43,7 +43,7 @@ export default class UserUpload extends Vue {
   @userModule.Mutation('setUpLoading') private setUpLoading!: Function;
   @userModule.Mutation('updateUploadLists') private updateUploadLists!: Function;
   @userModule.Mutation('addErr') private addErr!: Function;
-  private keyNames: string[] = ['uname', 'number', 'roleid', 'sex', 'phone', 'password','status','CreateUserId'];
+  private keyNames: string[] = ['uname', 'number', 'roleid', 'sex', 'phone', 'password','status','toiletId'];
   private setData (users: User[]) {
     users = users.slice(2);
     users = users.filter((user) => {
@@ -65,7 +65,7 @@ export default class UserUpload extends Vue {
       let phoneErr: boolean = false;
       const pwdLen: number = user.password!.toString().length;
       if (nums.length) {
-        if (nums.includes((<number>user.number!))) {
+        if (nums.includes((<number>user.numbers!))) {
           cellClzName.number = errClzName;
         }
       }
@@ -93,7 +93,7 @@ export default class UserUpload extends Vue {
         user.status = 0;
       }
 
-      nums.push((<number>user.number!));
+      nums.push((<number>user.numbers!));
       phoneNums.push((<number>user.phone!));
     }
   }

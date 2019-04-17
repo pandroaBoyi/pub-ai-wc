@@ -40,16 +40,19 @@ export interface TableCol {
 }
 
 export interface User {
-  uname?: string;
+  id?: string;
+  uname?: string | IviewFormCheck[];
   nickName?: string;
-  password?: string;
-  phone?: number | string;
-  number?: number | string;
+  password?: string | IviewFormCheck[];
+  phone?: number | string | IviewFormCheck[];
+  numbers?: number | string | IviewFormCheck[];
   sex?: string;
   roleid?: string;
   status?: number | string;
-  CreateUserId?: string;
+  toiletId?: string;
   cellClassName?: CellClassName;
+  rolename?: string;
+  createdatetime?: string;
 }
 
 export interface CellClassName {
@@ -102,8 +105,19 @@ export interface WcInfo {
   pageNum: number;
 }
 
+export interface SysUserParams{
+  status?: number | string;
+  role?: string;
+  pageNum?: number;
+  pageSize?: number;
+}
+
 export interface WcSeat {
   prefix?: string;
   types?: string;
   num?: number;
+}
+
+export interface Role{
+  
 }

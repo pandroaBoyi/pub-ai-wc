@@ -34,11 +34,10 @@
            <Input v-model="wc.managerName" placeholder="请输入所长名字"></Input>
         </FormItem>
         <FormItem label="添加厕位" prop="place" class="wc-form-tree">
-           <!-- <Tree :data="data4" show-checkbox multiple ref="tree"></Tree> -->
            <wc-type-checkbox :lists.sync="wc.place"></wc-type-checkbox>
         </FormItem>
         <FormItem class="wc-form-btn">
-          <Button :to="$UNAME_CONST.WC_INFO" class="ai-btn">取消</Button>
+          <Button :to="{name: $UNAME_CONST.WC_INFO}" class="ai-btn">取消</Button>
           <Button type="primary" @click="handleSubmit('wc')" class="ai-btn">确定</Button>
         </FormItem>
       </Form>
@@ -70,6 +69,7 @@ Component.registerHooks([
 export default class WcInfoModify extends Vue {
   @wcInfo.Action('wcModify') private wcModify!: Function;
   @wcInfo.State('wcList') private wcList!: Wc[];
+  
   private wc: Wc = {
     toiletid: '',
     codeId: '',
